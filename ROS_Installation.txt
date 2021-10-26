@@ -18,7 +18,6 @@ Desktop-Full Install: (Recommended) : ROS, rqt, rviz, robot-generic libraries, 2
   sudo apt install ros-melodic-desktop-full
 
 Desktop Install: ROS, rqt, rviz, and robot-generic libraries
-Use desktop install for Nvidia Jetson Nano
   sudo apt install ros-melodic-desktop
 
 ROS-Base: (Bare Bones) ROS package, build, and communication libraries. No GUI tools.
