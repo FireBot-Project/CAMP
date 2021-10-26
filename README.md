@@ -7,8 +7,8 @@ Our goal is to build a moving image-based fire detection system that can answer 
 * ROS Packages listed in the ROS Installation Crash Course Document
 
 The two Documents in this repository contain information on Getting Started with this project and even getting the specific ROS packages installed to be able to build the software stack.
-* [Getting Started Doc.odt](https://github.com/CAMP-Project/CAMP/raw/master/Getting%20Started%20Doc.odt)
-* [ROS Installation Crash Course.odt](https://github.com/CAMP-Project/CAMP/raw/master/ROS%20Installation%20Crash%20Course.odt)
+* [ROS_Installation.txt](https://github.com/FireBot-Project/CAMP/raw/master/ROS_Installation.txt)
+* [Jetson_Nano_Installation.txt](https://github.com/FireBot-Project/CAMP/raw/master/Jetson_Nano_Installation.txt)
 
 ## How to build project
 
