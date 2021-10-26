@@ -12,17 +12,17 @@ The two Documents in this repository contain information on Getting Started with
 
 ## How to build project
 
-Before building this project, be sure to install the project dependencies listed above. Once setup, run the following commands in the terminal.
+1. Clone project directory
+  git clone https://github.com/FireBot-Project/CAMP.git
 
-```
-git clone https://github.com/CAMP-Project/CAMP.git
+2. Install ROS
+  View ROS_Installation.txt for desktop/laptop
+  View Jetson_Nano_Installation.txt for Jetson Nano 
 
-cd CAMP
-
-git submodule update --init
-
-catkin_make
-```
+3. Build project
+  cd CAMP
+  git submodule update --init
+  catkin_make
 
 ## Project Contents
 Here are our interesting or new contributions to the project. There are more packages in the srcfolder, but some of them come with the turtlebot or where inherited from previous groups.
