@@ -1,7 +1,5 @@
-# Coordinated Autonomous Mapping & Pathfinding
-This project was put together by Sean Carda, Manpreet Singh, and Tyler Pigott with help from Dr. Michael McCourt and a foundation from the FireForce team as a part of the Electrical Engineering Program at the Univerity of Washington Tacoma and continued into the summer after graduation as a research project. Our goal was to get multiple autonomous Turtlebot3 robots to work together to map a space, and we got pretty darn close.
-
-The final result of our project wasseveral useful bits of code that could combine with more time and development to reach the project goal. Packages include one that accepts navigation commands to navigate to points, several options for generating points, a Kalman filter to help smooth time-of-flight sensor data, the Multimaster Arbitrator to facilitate inter-robot communication, and some packages for transforming maps. A more detailed account of project contents is below.
+# Coordinated Autonomous Image-based Fire Detection System
+Our goal is to build a moving image-based fire detection system that can answer the limitations of traditional fire detection technologies. FireBot moves along fire and provides a real-time report. These two key features can play a crucial role in reducing manual efforts to understand the dynamics of fire and losses by alarming users early through early fire detection.
 
 ## Project Depenendencies
 * [Multimaster FKIE](http://wiki.ros.org/multimaster_fkie)
