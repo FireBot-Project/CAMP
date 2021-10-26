@@ -4,7 +4,7 @@ Our goal is to build a moving image-based fire detection system that can answer 
 ## Project Depenendencies
 * [Multimaster FKIE](http://wiki.ros.org/multimaster_fkie)
 * [Python2 version of OpenCV](https://github.com/opencv/opencv)
-* ROS Packages listed in the ROS Installation Crash Course Document
+* ROS Packages listed in the ROS Installation Document
 
 The two Documents in this repository contain information on Getting Started with this project and even getting the specific ROS packages installed to be able to build the software stack.
 * [ROS_Installation.txt](https://github.com/FireBot-Project/CAMP/raw/master/ROS_Installation.txt)
