@@ -1,3 +1,5 @@
+Visit http://wiki.ros.org/melodic/Installation/Ubuntu for more information.
+
 1. Ubuntu install of ROS Melodic
 
 1.1 Setup your sources.list
