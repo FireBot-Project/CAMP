@@ -52,12 +52,49 @@
   
   2.8 Install ROS base
     sudo apt-get install -y ros-melodic-ros-base
-  
     sudo apt install python-rosdep
-    
     sudo rosdep init
-    
     rosdep update
+        
+TurtleBot3 Setup-----------------------------------------------------------------------------------------------------------------------
+    
+    mkdir -p ~/catkin_ws/src
+    cd ~/catkin_ws/src
+    sudo apt install ros-melodic-rosserial-python ros-melodic-rosserial-tf ros-melodic-hls-lfcd-lds-driver ros-melodic-turtlebot3-msgs ros-melodic-dynamixel-sdk
+    git clone -b melodic-devel https://github.com/ROBOTIS-GIT/turtlebot3.git
+    cd ~/catkin_ws/src/turtlebot3
+    rm -r turtlebot3_discription/turtlebot3_teleop/turtlebot_navigation/turtlebot3_slam/turtlebot3_example/
+    source /opt/ros/melodic/setup.sh
+    cd ~/catkin_ws && catkin_make
+    source ~/.bashrc
+    
+OpenCR Setup -----------------------------------------------------------------------------------------------------------------------
+    
+    cd ~
+    sudo dpkg --add-architecture armhf
+    sudo apt-get update
+    sudo apt-get install libc6:armhf
+    export OPENCR_PORT=/dev/ttyACM0
+    export OPENCR_MODEL={TB3_MODEL}
+    wget https://github.com/ROBOTIS-GIT/OpenCR-Binaries/raw/master/turtlebot3/ROS1/latest/opencr_update.tar.bz2
+    tar -xvf opencr_update.tar.bz2
+    cd./opencr_update
+    sudo chmod a+rw /dev/ttyACM0
+    ./update.sh $OPENCR_PORT $OPENCR_MODEL.opencr
+    wget https://raw.githubusercontent.com/ROBOTIS-GIT/OpenCR/master/99-opencr-cdc.rules
+    sudo cp ./99-opencr-cdc.rules /etc/udev/rules.d/
+    sudo udevadm conrol --reload-rules
+    sudo udevadm trigger
+    
+SLAM -----------------------------------------------------------------------------------------------------------------------
+    t1> roscore
+    t2> export TURTLEBOT3_MODEL={TB3_model}
+    
+    continue 
+    
+        
+CAMP -----------------------------------------------------------------------------------------------------------------------      
+    need to find out which packages are absolutely required.
     
     sudo apt install 
     python-catkin-pkg 
@@ -89,3 +126,8 @@
     ros-melodic-urdf
     ros-melodic-xacro
     
+
+
+
+
+
