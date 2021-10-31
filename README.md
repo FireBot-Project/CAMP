@@ -13,11 +13,11 @@ The two Documents in this repository contain information on Getting Started with
 ## How to build project
 
 1. Clone project directory
-  * git clone https://github.com/FireBot-Project/CAMP.git
+   * git clone https://github.com/FireBot-Project/CAMP.git
 
 2. Install ROS
-  * View ROS_Installation.txt for desktop/laptop
-  * View Jetson_Nano_Installation.txt for Jetson Nano 
+   * View ROS_Installation.txt for desktop & laptop
+   * View Jetson_Nano_Installation.txt for Jetson Nano 
 
 3. Build project
   cd CAMP
