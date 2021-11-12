@@ -30,9 +30,6 @@
 
 6. Network Configuration
 
-ROS_MASTER_URI = http://IP_OF_REMOTE_PC:11311
-ROS_HOSTNAME = IP_OF_TURTLEBOT
-
 6.1 Connect PC to a WiFi device and find the assigned IP address with the command below.
 	sudo apt install net-tools
 	ifconfig
@@ -45,3 +42,17 @@ Modify the address of localhost in the ROS_MASTER_URI and ROS_HOSTNAME with the 
 
 6.4 Source the bashrc with below command. 
 	source ~/.bashrc
+
+ROS_MASTER_URI = http://IP_OF_REMOTE_PC:11311
+ROS_HOSTNAME = IP_OF_REMOTE_PC
+
+6.5 ssh Setup
+	ssh localhost
+do the following if you get "ssh: connect to host localhost port 22: Connection refused" 
+	sudo apt-get update
+	sudo apt-get install openssh-server
+	sudo service ssh status
+you are ready if you see "Active: active (running)" 
+
+
+
