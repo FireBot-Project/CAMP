@@ -78,7 +78,7 @@ OpenCR Setup -------------------------------------------------------------------
     export OPENCR_MODEL={TB3_MODEL}
     wget https://github.com/ROBOTIS-GIT/OpenCR-Binaries/raw/master/turtlebot3/ROS1/latest/opencr_update.tar.bz2
     tar -xvf opencr_update.tar.bz2
-    cd./opencr_update
+    cd ./opencr_update
     sudo chmod a+rw /dev/ttyACM0
     ./update.sh $OPENCR_PORT $OPENCR_MODEL.opencr
     wget https://raw.githubusercontent.com/ROBOTIS-GIT/OpenCR/master/99-opencr-cdc.rules
