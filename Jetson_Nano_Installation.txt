@@ -38,8 +38,8 @@ sudo apt-get install -y cmake python-catkin-pkg python-empy python-nose python-s
     catkin_make
     -----------------------------------------------
 
-echo "export ROS_MASTER_URI = http://IP_OF_REMOTE_PC:11311" >> ~/.bashrc
-echo "export ROS_HOSTNAME = IP_OF_TURTLEBOT" >> ~/.bashrc   
+echo "export ROS_MASTER_URI=http://IP_OF_REMOTE_PC:11311" >> ~/.bashrc
+echo "export ROS_HOSTNAME=IP_OF_TURTLEBOT" >> ~/.bashrc   
 source ~/.bashrc
     
 4. OpenCR Setup
