@@ -56,6 +56,10 @@ tar -xvf opencr_update.tar.bz2
 cd ./opencr_update
 sudo chmod a+rw dev/ttyACM0
 ./update.sh $OPENCR_PORT $OPENCR_MODEL.opencr
+wget https://raw.githubusercontent.com/ROBOTIS-GIT/OpenCR/master/99-opencr-cdc.rules
+sudo cp ./99-opencr-cdc.rules /etc/udev/rules.d/
+sudo udevadm trigger
+
     
 5. SSH Setup
 
