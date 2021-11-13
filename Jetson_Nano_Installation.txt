@@ -67,13 +67,27 @@ sudo nano /etc/ssh/sshd_config
 Uncomment PasswordAuthentication yes
 sudo service ssh restart
 
-6. SLAM
+6. Teleop_key
     
-t1> roscore
-t2> export TURTLEBOT3_MODEL={TB3_model}
+roscore
+ssh firebot@{IP_ADDRESS_OF_JETSON_NANO}
+roslaunch turtlebot3_bringup turtlebot3_robot.launch
+export TURTLEBOT3_MODEL=${TB3_MODEL}
+roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
   
-continue 
-   
+7. SLAM
+
+roscore
+ssh firebot@{IP_ADDRESS_OF_RASPBERRY_PI}
+roslaunch turtlebot3_bringup turtlebot3_robot.launch
+export TURTLEBOT3_MODEL=${TB3_MODEL}
+roslaunch turtlebot3_slam turtlebot3_slam.launch
+
+export TURTLEBOT3_MODEL=burger
+roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+
+https://emanual.robotis.com/docs/en/platform/turtlebot3/slam/#run-slam-node
+
 CAMP -----------------------------------------------------------------------------------------------------------------------      
     need to find out which packages are absolutely required.
     
