@@ -37,8 +37,8 @@ nano ~/.bashrc
 
 6.3 Press Ctrl+END or Alt+/ to move the cursor to the end of line.
 Modify the address of localhost in the ROS_MASTER_URI and ROS_HOSTNAME with the IP address acquired from the above terminal window.
-ROS_MASTER_URI = http://IP_OF_REMOTE_PC:11311
-ROS_HOSTNAME = IP_OF_REMOTE_PC
+ROS_MASTER_URI=http://IP_OF_REMOTE_PC:11311
+ROS_HOSTNAME=IP_OF_REMOTE_PC
 
 6.4 Source the bashrc with below command. 
 
