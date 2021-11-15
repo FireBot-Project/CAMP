@@ -56,8 +56,10 @@ Add image node in rviz.
 To test different camera parameters (depth gain, autoexposure, contrast, brightness, gamma etc.) dynamically:
 	roscore
 	roslaunch realsense2_camera rs_aligned_depth.launch
+	rostopic list
 	rosrun rqt_reconfigure rqt_reconfigure
 	rviz
+Make changes in rqt reconfigure and view changes in rviz. 
 
 https://idorobotics.com/2018/11/02/integrating-the-intel-realsense-d435-with-ros/
 http://wiki.ros.org/RealSense
