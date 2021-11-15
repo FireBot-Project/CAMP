@@ -119,6 +119,9 @@ import cv2
 cv2.__version__
 exit()
 
+17. Install 
+sudo apt-get install ros-melodic-cv-bridge
+sudo apt-get install ros-melodic-vision-opencv
 
 Reference:
 https://qengineering.eu/install-opencv-4.5-on-jetson-nano.html
