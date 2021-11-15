@@ -21,37 +21,44 @@ from your system.
 Then install librealsense v2.31.0
 	sudo apt install librealsense2=2.31.0-5ubuntu5~1.gbp95d195 librealsense2-dbg=2.31.0-5ubuntu5~1.gbp95d195 librealsense2-utils=2.31.0-5ubuntu5~1.gbp95d195 librealsense2-gl=2.31.0-5ubuntu5~1.gbp95d195 librealsense2-dev=2.31.0-5ubuntu5~1.gbp95d195
 	sudo apt install librealsense2-udev-rules=2.31.0-5ubuntu5~1.gbp95d195
-	
-	
-	
-To prevent updating to a newer version you should remove the RealSense™ keys as suggested above. At last follow the instructions by JetsonHacks.
+		
+4. To prevent updating to a newer version you should remove the RealSense™ keys as suggested above. At last follow the instructions by JetsonHacks.
 
 Install RealSense Wrapper for ROS
 There are two prerequisites for installing realsense-ros on the Jetson Nano. The first is to install librealsense as linked above. The second prerequisite is a ROS installation. Checkout Install ROS on Jetson Nano for a how-to on installing ROS Melodic on the Nano.
 
 With the two prerequisites out of the way, it’s time to install realsense-ros. There are convenience scripts to install the RealSense ROS Wrapper on the Github JetsonHacksNano account.
 
-$ git clone https://github.com/JetsonHacksNano/installRealSenseROS
-$ cd installRealSenseROS
-$ ./installRealSenseROS <catkin workplace name>
+	git clone https://github.com/JetsonHacksNano/installRealSenseROS
+	cd installRealSenseROS
+	./installRealSenseROS <catkin workplace name>
 
 Where catkin workplace name is the path to the catkin_workspace to place the RealSense ROS package. If no catkin workplace name is specified, the script defaults to ~/catkin_ws.
 
 Note: Version are in the releases section. The master branch of the repository will usually match the most recent release release of L4T, but you may have to look through the releases for a suitable version. To checkout one of the releases, switch to the installRealSenseROS directory and then:
 
-$ git checkout <version number>
+	git checkout <version number>
 
 e.g.
 
-$ git checkout vL4T32.2.1
+	git checkout vL4T32.2.1
 
 The ROS launch file for the camera(s) will be in the src directory of the Catkin workspace realsense-ros/realsense2_camera/launch There are a variety of launch files to choose from. For example:
 
-$ roslaunch realsense2_camera rs_camera.launch
+5. Launch RealSense Node
+	roscore
+	roslaunch realsense2_camera rs_camera.launch
+	rviz 
+	
+Add image node in rviz.
 
-You will need to make sure that your Catkin workspace is correctly sourced, and roscore is running.
+6. Camera parameter setting
+To test different camera parameters (depth gain, autoexposure, contrast, brightness, gamma etc.) dynamically:
+	roscore
+	roslaunch realsense2_camera rs_aligned_depth.launch
+	rosrun rqt_reconfigure rqt_reconfigure
+	rviz
 
-
-
+https://idorobotics.com/2018/11/02/integrating-the-intel-realsense-d435-with-ros/
 http://wiki.ros.org/RealSense
 https://www.jetsonhacks.com/2019/10/25/realsense-ros-wrapper-jetson-nano/
