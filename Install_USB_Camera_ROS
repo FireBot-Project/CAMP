@@ -1,0 +1,23 @@
+1. Setup USB camera
+	sudo apt-get install ros-melodic-uvc-camera
+
+2. Install image packages
+	sudo apt-get install ros-melodic-image-*
+
+3. Install rqt image view plugin
+	sudo apt-get install ros-melodic-rqt-image-view
+	
+4. Connect USB camera
+	ls /dev/
+	
+check if video0 or video1 or video2 exists
+	lsusb
+check if USB camera is detected
+
+5. Run roscore
+	roscore
+	rosrun uvc_camera uvc_camera_node
+	rostopic list
+	
+
+ 
