@@ -12,14 +12,18 @@ Optionally install the developer and debug packages
 sudo apt-get install librealsense2-dev
 sudo apt-get install librealsense2-dbg
 
-4. Launch RealSense Node
+4. Install Reealsense
+sudo apt-get install ros-melodic-realsense2-camera
+sudo apt-get install ros-melodic-realsense2-description
+
+5. Launch RealSense Node
 roscore
 roslaunch realsense2_camera rs_camera.launch
 rviz 
 	
 Add image node in rviz.
 
-5. Camera parameter setting
+6. Camera parameter setting
 To test different camera parameters (depth gain, autoexposure, contrast, brightness, gamma etc.) dynamically:
 roscore
 roslaunch realsense2_camera rs_aligned_depth.launch
