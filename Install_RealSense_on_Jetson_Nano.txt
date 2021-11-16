@@ -1,27 +1,27 @@
 1. Jetson Nano Usage
 The supported Ubuntu version of the Jetson Nano is still relying on the kernel version 4.9.x. You can check that with
-	uname -r
-	
+uname -r
+
 2. Remove possible newer versions
 If you already tried to install things, here is the way to revert those. If you start with a fresh Jetson Nano skip to the installation. If you build librealsense from source (may vary on build location):
 
-	cd librealsense/build
-	sudo make uninstall 
-	
+cd librealsense/build
+sudo make uninstall 
+
 you can then remove the folder. If you have installed librealsense via apt follow the instructions by Intel® Also remove the RealSense™ keys from the source list:
-	sudo nano /etc/apt/sources.list
-	
+sudo nano /etc/apt/sources.list
+
 Remove realsense_ros and ddynamic_reconfigure by deleting then manually from your workspace and with
-	sudo apt remove ros-melodic-realsense-ros ros-melodic-ddynamic-reconfigure
+sudo apt remove ros-melodic-realsense-ros ros-melodic-ddynamic-reconfigure
 from your system.
 
 3. Install Jetson Nano versions
-	sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE || sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE
-	sudo add-apt-repository "deb https://librealsense.intel.com/Debian/apt-repo $(lsb_release -cs) main" -u
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE || sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE
+sudo add-apt-repository "deb https://librealsense.intel.com/Debian/apt-repo $(lsb_release -cs) main" -u
 Then install librealsense v2.31.0
-	sudo apt install librealsense2=2.31.0-5ubuntu5~1.gbp95d195 librealsense2-dbg=2.31.0-5ubuntu5~1.gbp95d195 librealsense2-utils=2.31.0-5ubuntu5~1.gbp95d195 librealsense2-gl=2.31.0-5ubuntu5~1.gbp95d195 librealsense2-dev=2.31.0-5ubuntu5~1.gbp95d195
-	sudo apt install librealsense2-udev-rules=2.31.0-5ubuntu5~1.gbp95d195
-		
+sudo apt install librealsense2=2.31.0-5ubuntu5~1.gbp95d195 librealsense2-dbg=2.31.0-5ubuntu5~1.gbp95d195 librealsense2-utils=2.31.0-5ubuntu5~1.gbp95d195 librealsense2-gl=2.31.0-5ubuntu5~1.gbp95d195 librealsense2-dev=2.31.0-5ubuntu5~1.gbp95d195
+sudo apt install librealsense2-udev-rules=2.31.0-5ubuntu5~1.gbp95d195
+
 4. To prevent updating to a newer version you should remove the RealSense™ keys as suggested above. At last follow the instructions by JetsonHacks.
 
 Install RealSense Wrapper for ROS
@@ -29,36 +29,36 @@ There are two prerequisites for installing realsense-ros on the Jetson Nano. The
 
 With the two prerequisites out of the way, it’s time to install realsense-ros. There are convenience scripts to install the RealSense ROS Wrapper on the Github JetsonHacksNano account.
 
-	git clone https://github.com/JetsonHacksNano/installRealSenseROS
-	cd installRealSenseROS
-	./installRealSenseROS <catkin workplace name>
+git clone https://github.com/JetsonHacksNano/installRealSenseROS
+cd installRealSenseROS
+./installRealSenseROS <catkin workplace name>
 
 Where catkin workplace name is the path to the catkin_workspace to place the RealSense ROS package. If no catkin workplace name is specified, the script defaults to ~/catkin_ws.
 
 Note: Version are in the releases section. The master branch of the repository will usually match the most recent release release of L4T, but you may have to look through the releases for a suitable version. To checkout one of the releases, switch to the installRealSenseROS directory and then:
 
-	git checkout <version number>
+git checkout <version number>
 
 e.g.
 
-	git checkout vL4T32.2.1
+git checkout vL4T32.2.1
 
 The ROS launch file for the camera(s) will be in the src directory of the Catkin workspace realsense-ros/realsense2_camera/launch There are a variety of launch files to choose from. For example:
 
 5. Launch RealSense Node
-	roscore
-	roslaunch realsense2_camera rs_camera.launch
-	rviz 
-	
+roscore
+roslaunch realsense2_camera rs_camera.launch
+rviz 
+
 Add image node in rviz.
 
 6. Camera parameter setting
 To test different camera parameters (depth gain, autoexposure, contrast, brightness, gamma etc.) dynamically:
-	roscore
-	roslaunch realsense2_camera rs_aligned_depth.launch
-	rostopic list
-	rosrun rqt_reconfigure rqt_reconfigure
-	rviz
+roscore
+roslaunch realsense2_camera rs_aligned_depth.launch
+rostopic list
+rosrun rqt_reconfigure rqt_reconfigure
+rviz
 Make changes in rqt reconfigure and view changes in rviz. 
 
 https://idorobotics.com/2018/11/02/integrating-the-intel-realsense-d435-with-ros/
