@@ -1,0 +1,32 @@
+1. Register the server's key
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE || sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE
+
+2. Add the server to the list of repositories
+sudo add-apt-repository "deb https://librealsense.intel.com/Debian/apt-repo $(lsb_release -cs) main" -u
+
+3. Install the libraries   
+sudo apt-get install librealsense2-dkms
+sudo apt-get install librealsense2-utils
+
+Optionally install the developer and debug packages
+sudo apt-get install librealsense2-dev
+sudo apt-get install librealsense2-dbg
+
+4. Launch RealSense Node
+roscore
+roslaunch realsense2_camera rs_camera.launch
+rviz 
+	
+Add image node in rviz.
+
+5. Camera parameter setting
+To test different camera parameters (depth gain, autoexposure, contrast, brightness, gamma etc.) dynamically:
+roscore
+roslaunch realsense2_camera rs_aligned_depth.launch
+rostopic list
+rosrun rqt_reconfigure rqt_reconfigure
+rviz
+
+Make changes in rqt reconfigure and view changes in rviz. 
+
+https://intel.github.io/robot_devkit_doc/pages/rs_slam.html
