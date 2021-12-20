@@ -1,0 +1,41 @@
+sudo apt-get install ros-melodic-gazebo-ros-pkgs ros-melodic-gazebo-ros-control
+
+Building the packages
+	mkdir -p ~/catkin_ws/src
+
+	cd ~/catkin_ws/src/
+	git clone https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
+	git clone https://github.com/ROBOTIS-GIT/turtlebot3.git
+	git clone https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
+	git clone https://github.com/fazildgr8/ros_autonomous_slam.git
+
+	cd ~/catkin_ws/
+	catkin_make
+
+	source devel/setup.bash
+
+Navigation Stack
+	sudo apt-get install ros-melodic-navigation
+	sudo apt-get install ros-melodic-tf2-sensor-msgs
+	cd catkin_ws/src
+	git clone -b melodic-devel https://github.com/ros-planning/navigation
+	cd ..
+	catkin_make
+	source devel/setup.bash
+	
+Step 1: Place the Robot in the Environment within Gazebo	
+	export TURTLEBOT3_MODEL=burger
+	source devel/setup.bash
+	roslaunch ros_autonomous_slam turtlebot3_world.launch
+	
+Step 2: Perform Autonomous exploration of the environment and generate the Map
+	roslaunch ros_autonomous_slam autonomous_explorer.launch
+	
+Save the map	
+	rosrun map_server map_saver -f my_map
+
+Manual mapping
+	roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+	
+Step 3: Perform path planning and go to goal in the environment
+	roslaunch ros_autonomous_slam turtlebot3_navigation.launch
