@@ -1,0 +1,8 @@
+gazebo: symbol lookup error: /usr/lib/x86_64-linux-gnu/libgazebo_common.so.9: undefined symbol: _ZN8ignition10fuel_tools12ClientConfig12SetUserAgentERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+	sudo apt upgrade libignition-math2
+
+VMware: vmw_ioctl_command error Invalid argument.
+check openGL version
+	sudo apt install glmark2
+downgrade to 2.1 if it is 3.3
+	echo "export SVGA_VGPU10=0" >> ~/.bashrc
