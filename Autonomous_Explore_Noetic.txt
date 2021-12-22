@@ -4,9 +4,9 @@ Building the packages
 	mkdir -p ~/catkin_ws/src
 
 	cd ~/catkin_ws/src/
-	git clone https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
-	git clone https://github.com/ROBOTIS-GIT/turtlebot3.git
-	git clone https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
+	git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
+	git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3.git
+	git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
 	git clone https://github.com/fazildgr8/ros_autonomous_slam.git
 
 	cd ~/catkin_ws/
