@@ -1,0 +1,17 @@
+in SRC of work space
+	git clone https://github.com/Slamtec/rplidar_ros.git
+	cd ..
+	catkin_make
+	source devel/setup.bash
+check
+	ls -l /dev |grep ttyUSB
+	sudo chmod 666 /dev/ttyUSB0
+	roslaunch rplidar_ros view_rplidar.launch
+USB port remap
+	KERNEL=="ttyUSB*", MODE="0666"
+	./scripts/create_udev_rules.sh
+	ls -l /dev | grep ttyUSB
+edit rplidar.launch
+	<param name="serial_port" type="string" value="/dev/rplidar"/>
+	
+	
