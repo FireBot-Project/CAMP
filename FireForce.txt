@@ -6,3 +6,7 @@ Error: Project ‘cv_bridge’ specifies ‘/usr/include/opencv’ as an include
 	
 	cd ~/catkin_ws/
 	catkin_make
+
+Install realsense
+
+sudo apt-get install ros-melodic-turtlebot3-gazebo
