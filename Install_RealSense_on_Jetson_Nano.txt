@@ -31,7 +31,7 @@ With the two prerequisites out of the way, it’s time to install realsense-ros.
 
 git clone https://github.com/JetsonHacksNano/installRealSenseROS
 cd installRealSenseROS
-./installRealSenseROS <catkin workplace name>
+./installRealSenseROS.sh <catkin workplace name>
 
 Where catkin workplace name is the path to the catkin_workspace to place the RealSense ROS package. If no catkin workplace name is specified, the script defaults to ~/catkin_ws.
 
