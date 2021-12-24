@@ -1,1 +1,8 @@
 https://github.com/JacobDickson/FireForce
+
+Error: Project ‘cv_bridge’ specifies ‘/usr/include/opencv’ as an include dir, which is not found. It does neither exist as an absolute directory nor in…
+	cd /usr/include
+	sudo ln -s opencv4/ opencv
+	
+	cd ~/catkin_ws/
+	catkin_make
