@@ -1,45 +1,44 @@
 #!/usr/bin/env python 
 #from geometry_msgs import msg
-from cv2 import sqrt
+import numpy
+import rospy
 import roslib
 import math
-#mport tf2_py
 
+from cv2 import sqrt
+#mport tf2_py
 from geometry_msgs.msg import Vector3
 #from nav_msgs.msg import Odometry, OccupancyGrid
 from std_msgs.msg import Bool, Float32, String, Float32MultiArray
 #from nav_msgs.msg import Odometry
 from localizer_dwm1001.msg import Tag
-
+from math import pow, acos
 #import tf2_geometry_msgs
 #mport tf2_msgs
 #import tf2_ros
 #from tf import transformations
 
-import numpy
-import rospy
-
 class Estimator:
     def getRedScore(self, data):
         self.redScore = data.data
-    
+
     #def getPosition(self, data):
     #    self.odom_pos.x = data.pose.pose.position.x
     #    self.odom_pos.y = data.pose.pose.position.y
-    
+
     def getPosition(self, data):
         #print("\ndatax is: ")
-		#print(data.x)
-		#print("\ndatay is: ")
-		#print(data.y)
+        #print(data.x)
+        #print("\ndatay is: ")
+        #print(data.y)
         self.pose.x = data.x
-        self.pose.y = data.y    
+        self.pose.y = data.y
 
     def __init__(self):
         rospy.init_node('estimator_listener', anonymous=False)
         rospy.Subscriber('img_rec_line', Float32, self.getRedScore)
         #rospy.Subscriber('odom', Odometry, self.getPosition)
-        rospy.Subscriber('/dwm1001/tag1', Tag, self.getPosition) # subscribe tag message
+        rospy.Subscriber('/dwm1001/tag', Tag, self.getPosition) # subscribe tag message
         self.pub = rospy.Publisher('estimated_state', Float32MultiArray, queue_size=5)
 
         self.distanceThreshold = 0.1  # The linear travel distance that constitutes a move to another grid
@@ -48,6 +47,7 @@ class Estimator:
         self.FNR = 0.1  # false negative rate
         self.num_locations = 10;
         self.estimated_state = [0.5] * self.num_locations  # list of 100 locations with initial probability of 0.5
+
         self.index_position = 0  # linear index position
         #self.odom_pos = Vector3()
         #self.odom_pos.z = 1
@@ -57,16 +57,16 @@ class Estimator:
         self.redScore = 0
 
         self.pose = Tag() # dwm1001/tag1
-        self.last_pos = Vector3() # difference between current and last position
-        self.delta_pos = Vector3() # difference between current and last position
-		self.last_pos.x = self.pose.x #last position = current position
-		self.last_pos.y = self.pose.y
+        self.last_pose = Vector3() # difference between current and last position
+        self.delta_pose = Vector3() # difference between current and last position
+        self.last_pose.x = self.pose.x #last position = current position
+        self.last_pose.y = self.pose.y
 
        # def getPosition(location): #get position from DecaWave topic Distance from starting position
         #    coordinates = location.data
          #   position = ((coordinates[0]-startX)^2 + (coordinates[1] - startY)^2)**(0.5);
           #  return position; 
-          
+
     def decayBelief(self):
         for idx, belief in enumerate(self.estimated_state):
             if belief > 0.5:
@@ -80,22 +80,23 @@ class Estimator:
         #  the distance threshold, update the old position to the current position and update the
         #  linear index for the belief matrix
         #dif = math.sqrt(math.pow(self.last_odom_position['x'] - self.odom_pos.x, 2 ) + math.pow(self.last_odom_position['y'] -self.odom_pos.y, 2))
-        
-        self.delta_pos.x = self.pose.x - self.last_pos.x
-        self.delta_pos.y = self.pose.y - self.last_pos.y
-        
-        dist = math.sqrt(math.pow(self.delta_pos.x, 2 ) + math.pow(self.delta_pos.y, 2))
-        
+
+        self.delta_pose.x = self.pose.x - self.last_pose.x
+        self.delta_pose.y = self.pose.y - self.last_pose.y
+
+        dist = math.sqrt(math.pow(self.delta_pose.x, 2 ) + math.pow(self.delta_pose.y, 2))
+
         #angle between last and current position
-		theta1 = acos(((self.delta_pos.x)/(dist)))
-        
+        if dist > 0:
+            theta1 = acos(((self.delta_pose.x)/(dist)))
+
         #if dif >= self.distanceThreshold:
             #self.last_odom_position['x'] = self.odom_pos.x
             #self.last_odom_position['y'] = self.odom_pos.y
-        
+
         if dist >= self.distanceThreshold:
-            self.last_pos.x = self.pose.x
-            self.last_pos.x = self.pose.y
+            self.last_pose.x = self.pose.x
+            self.last_pose.x = self.pose.y
             self.index_position += 1
 
         # set dynamic bounds to the left and right of the central position
@@ -106,7 +107,7 @@ class Estimator:
         if rightBound > (self.num_locations - 1):
             rightBound = self.num_locations - 1
         viewArea = range(leftBound, rightBound + 1)
-        
+
         # get the redscore and check against the threshold. If above threshold, update belief that there is
         #  a fire at the current location in the belief matrix. Otherwise, update that there is no fire.
         if self.redScore > self.redThreshold:
@@ -122,8 +123,8 @@ class Estimator:
 
         # the belief at each index in the belief matrix tends towards 0.5 (maximum uncertainty)
         self.decayBelief()
-	pubdata = Float32MultiArray()
-	pubdata.data = self.estimated_state
+        pubdata = Float32MultiArray()
+        pubdata.data = self.estimated_state
         self.pub.publish(pubdata)
         #print(self.estimated_state).
 
@@ -131,6 +132,8 @@ class Estimator:
 if __name__ == "__main__":
     estimator = Estimator();
     while not rospy.is_shutdown():
-        print('est state: ', estimator.estimated_state)
+        #print('est state: ', estimator.estimated_state)
+        print("last position x,y: {}, {}".format(estimator.last_pose.x, estimator.last_pose.y))
+        print("current position x,y: {}, {}".format(estimator.pose.x, estimator.pose.y))
         estimator.main()
-	rospy.sleep(1)
+        rospy.sleep(1)
