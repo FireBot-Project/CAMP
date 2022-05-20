@@ -1,0 +1,37 @@
+--in new terminal
+roscore
+
+--in new terminal
+roslaunch turtlebot3_bringup turtlebot3_robot.launch
+
+--in new terminal
+export TURTLEBOT3_MODEL=burger
+roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+
+--in new terminal
+sudo chmod 777 /dev/ttyACM1
+source devel/setup.bash
+roslaunch localizer_dwm1001 dwm1001.launch
+
+--in new terminal
+source devel/setup.bash
+rosrun low_pass_filter lowpass.py
+
+--in new terminal
+source devel/setup.bash
+rosrun imgRec img_rec.py
+
+--in new terminal
+source devel/setup.bash
+rosrun imgRec estimator.py
+
+--in new terminal
+source devel/setup.bash
+rosrun path_plan path_plan.py
+
+--in new terminal
+source devel/setup.bash
+rosrun movement execute_move.py
+
+--in new terminal
+pythong makebag
