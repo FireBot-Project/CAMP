@@ -1,10 +1,13 @@
 --in new terminal
+source ~/.bashrc
 roscore
 
 --in new terminal
+source ~/.bashrc
 roslaunch turtlebot3_bringup turtlebot3_robot.launch
 
 --in new terminal
+source ~/.bashrc
 export TURTLEBOT3_MODEL=burger
 roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 
