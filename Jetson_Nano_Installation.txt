@@ -88,3 +88,49 @@ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 
 https://emanual.robotis.com/docs/en/platform/turtlebot3/slam/#run-slam-node
 
+7. Firebot
+
+**create workspace
+mkdir -p ~/catkin_ws/src
+cd ~/catkin_ws/
+catkin_make
+
+**create package directories in '/catkin_ws/src'
+mkdir -p ~/imgRec/scripts
+mkdir -p ~/low_pass_filter/src
+mkdir -p ~/movement/src
+mkdir -p ~/path_plan/src
+
+**create the following nodes in '/imgRec/scripts'
+**nodes are available:
+**https://github.com/LightningAlchemist/Firebots2021_2022/tree/main/src/imgRec/scripts
+img_rec.py
+estimator.py
+**make them excutable
+chmod +x node_name.py
+ex) chmod +x img_rec.py
+
+**create the following nodes in '/low_pass_filter/src'
+**nodes are available:
+**https://github.com/LightningAlchemist/Firebots2021_2022/blob/main/src/low_pass_filter/src/lowpass.py
+lowpass.py 
+**make it excutable
+chmod +x lowpass.py 
+
+**create the following nodes in '/movement/src'
+**nodes are available:
+**https://github.com/LightningAlchemist/Firebots2021_2022/blob/main/src/movement/src/execute_move.py
+execute_move.py
+**make it excutable
+chmod +x execute_move.py
+
+**create the following nodes in '/path_plan/src'
+**nodes are available:
+**https://github.com/LightningAlchemist/Firebots2021_2022/blob/main/src/path_plan/src/path_plan.py
+path_plan.py
+**make it excutable
+chmod +x path_plan.py
+
+**go back to workspace and create packages
+cd ~/catkin_ws/
+catkin_make
