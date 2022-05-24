@@ -88,35 +88,3 @@ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 
 https://emanual.robotis.com/docs/en/platform/turtlebot3/slam/#run-slam-node
 
-CAMP -----------------------------------------------------------------------------------------------------------------------      
-need to find out which packages are absolutely required.
-
-sudo apt install -y
-python-catkin-pkg 
-python-pyqt5.qtwebkit 
-python-rosinstall 
-python-rosinstall-generator
-python-rospkg
-python-ruamel.yaml
-python-wstool
-ros-melodic-amcl
-ros-melodic-compressed-image-transport
-ros-melodic-depthimage-to-laserscan
-ros-melodic-gmapping
-ros-melodic-interactive-markers
-ros-melodic-joy
-ros-melodic-laser-proc
-ros-melodic-map-server
-ros-melodic-move-base
-ros-melodic-navigation
-ros-melodic-rgbd-launch
-ros-melodic-rosserial-arduino
-ros-melodic-rosserial-client
-ros-melodic-rosserial-msgs
-ros-melodic-rosserial-python
-ros-melodic-rosserial-server
-ros-melodic-rqt-image-view
-ros-melodic-teleop-twist-joy
-ros-melodic-teleop-twist-keyboard
-ros-melodic-urdf
-ros-melodic-xacro
