@@ -2,8 +2,11 @@ in src
 	git clone https://github.com/20chix/dwm1001_ros.git
 	catkin_make
 	source devel/setup.bash
-check port name
+check port name    port is usaully /dev/ttyACM1
 	ls -l /dev |grep ttyACM
-	sudo chmod 666 /dev/ttyACM_{Number}
+	sudo chmod 666 /dev/ttyACM{Number} 
+	ex) sudo chmod 666 /dev/ttyACM1
 change the port name in dwm1001.launch
-	<param name="serial_port_name"      value="/dev/ttyACM0" /> <!-- Name of serial port -->
+	<param name="serial_port_name"      value="/dev/ttyACM{Number}" /> <!-- Name of serial port -->
+	ex) <param name="serial_port_name"      value="/dev/ttyACM1" />
+	
